@@ -8,7 +8,7 @@ tasters <- data.frame(read.table("tasters.txt",header=TRUE,sep=","))
 
 # report config
 reports = "reports"
-fresh = TRUE
+fresh = FALSE
 
 cleanName <- function(file) {
   file <- basename(file)
@@ -33,6 +33,11 @@ loadRating <- function(file) {
   r$RealCost <- whiskies$Cost
 
   name <- cleanName(file)
+  # kludge fix up
+  if (name == "justin_retaste") {
+    name = "justin"
+  }
+  
   r$Taster <- name
   r$Gender <- subset(tasters,Name==name)$Gender
   data.frame(r)
@@ -86,13 +91,21 @@ drawPlot(ggplot(ratings,aes(x=reorder(Whiskey,Proof),y=Mellowness)) +
          file.path(reports,"mellowness_proof_violin.png"),width=1500)
 
 # comparing different rating axes
-ratings.long <- melt(ratings,id=c("Whiskey","Overall"),measure=c("Sweetness","Mellowness","Cost"))
-drawPlot(direct.label(ggplot(ratings.long,aes(x=Overall,y=value,colour=variable)) +
+ratings.long <- melt(ratings,id=c("Whiskey","Overall","Taster"),measure=c("Sweetness","Mellowness","Cost"))
+colnames(ratings.long) <- c("Whiskey","Overall","Taster","Variable","Value")
+drawPlot(direct.label(ggplot(ratings.long,aes(x=Overall,y=Value,colour=Variable)) +
                       ylim(1,5) + ylab("") +
                       geom_smooth(na.rm=TRUE) +
                       ggtitle("Overall ratings vs. other variables"),
                       "top.bumptwice"),
          file.path(reports,"overall_variables.png"),width=500,height=500)
+drawPlot(ggplot(ratings.long,aes(x=Overall,y=Value,colour=Variable)) +
+         ylim(1,5) + ylab("") +
+         geom_smooth(method="glm",na.rm=TRUE) +
+         geom_jitter(alpha=.3,size=1) +
+         ggtitle("Overall ratings vs. other variables") +
+         facet_wrap(~Taster,ncol=4),
+         file.path(reports,"overall_variables_taster.png"),width=1200,height=1200)
 
 # cost vs real cost
 drawPlot(ggplot(ratings,aes(x=RealCost,y=Cost,colour=Gender)) +
