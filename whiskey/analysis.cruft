@@ -1,0 +1,47 @@
+plotRating <- function(data,lab,file) {
+  png(file)
+  par(mar=c(9,5,2,2))
+  barplot(data,ylab=lab,xlab="",col=colors,
+          ylim=c(1,5),offset=1,las=2,
+          names.arg=whiskies$Name)
+  dev.off()
+}
+
+plotRelation <- function(data1,lab1,data2,lab2,file) {
+  # build the fancy chart
+  trellis.par.set("col",colors)
+  p <- xyplot(data1 ~ data2,
+              xlim=c(0,6),ylim=c(0,6),
+              col.symbol=colors,
+              groups=whiskies$Name,xlab=lab2,ylab=lab1,
+              jitter.x=TRUE,jitter.y=TRUE)
+  pl <- direct.label(p,list("smart.grid",col=colors))
+  # TODO match up colors of labels
+  
+  # write it out
+  png(file)
+  plot(pl)
+  dev.off()
+}
+
+# set up output directory in the reports
+#  out <- file.path("reports",cleanName(file))
+#
+#  # only generate reports (time consuming) if they don't already exist
+#  if (!file.exists(out)) {
+#    dir.create(out)
+#
+#    # plain charts
+#    plotRating(r[,1],lab="Overall",file=file.path(out,"overall.png"))
+#    plotRating(r[,2],lab="Sweetness",file=file.path(out,"sweetness.png"))
+#    plotRating(r[,3],lab="Mellowness",file=file.path(out,"mellow.png"))
+#    plotRating(r[,4],lab="Cost",file=file.path(out,"cost.png"))
+#    
+#    # relative charts
+#    plotRelation(r[,1],"Overall",r[,2],"Sweetness",
+#                 file=file.path(out,"overall_sweetness.png"))
+#    plotRelation(r[,1],"Overall",r[,3],"Mellowness",
+#                 file=file.path(out,"overall_mellowness.png"))
+#    plotRelation(r[,2],"Sweetness",r[,3],"Mellowness",
+#                 file=file.path(out,"sweetness_mellowness.png"))
+#  }
