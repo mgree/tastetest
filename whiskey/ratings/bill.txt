@@ -1,0 +1,17 @@
+Overall,Sweetness,Mellowness,Cost,Notes
+1,3.5,2.8,3.8,,tastes canadian? a bit off i guess but i like it
+2,,,,,
+3,2,2,3.6,,fudge aroma oilier than most
+4,3.2,2.8,4,,lollipops aroma smells way to sweet is this that eagle thing?
+5,3.8,2,2,,vanilla-ish aroma? tastes like kale but sharper i really like the complexity
+6,,,,,
+7,3.5,1.7,2.5,,marshmallow aroma or nothing? burnt sugar taste
+8,,,,,
+9,1.8,2,2,,a little repugnant "interesting"
+10,,,,,
+11,3,3.5,1.5,,not exactly harsh just not smooth smells like nothing tastes like nothing
+12,,,,,
+13,3.2,4,3.5,,cinnamon licorice aroma oily somewhat sour
+14,3,3.8,,,smells like bandaids tastes like dirt
+15,4,3.5,3.6,,nice body smells like baking
+16,,,,,

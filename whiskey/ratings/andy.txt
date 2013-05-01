@@ -1,0 +1,17 @@
+Overall,Sweetness,Mellowness,Cost,Notes
+1,3,3,3,4,goodish?
+2,2,1,2,4,even more ryeish than 10 12 14
+3,,,,,
+4,3,2,3,3,bourbon
+5,,,,,
+6,2,2,2,3,bourbon pretty bad
+7,,,,,
+8,4,4,5,5,i like it warm bourbon
+9,,,,,
+10,1,3,1,2,grass fuck rye? so harsh bad aftertaste
+11,3,4,2,3,good also?
+12,4,3,4,4,rye
+13,,,,,
+14,4,2,4,4,also ryeish
+15,,,,,
+16,4,2,4,5,bourbon

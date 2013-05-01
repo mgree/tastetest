@@ -1,0 +1,17 @@
+Overall,Sweetness,Mellowness,Cost,Notes
+1,1,5,3,1,a heart full of hate this whiskey's creator is a stinking capitalist pig
+2,,,,,
+3,4,4,5,3,ok! evolving flavor profile mellow then sweet then the full-booze palate punch my tongue feels swollen
+4,4,3,5,4,extremely mild nondescript whatever
+5,3.8,5,2,3,almost saccharine but pleasant very sweet fortified?
+6,,,,,
+7,1,4,1,1,this time i didn't feel hate or anger but a great sadness i imagine rotted fanged apples chasing me through booze dreams
+8,,,,,
+9,1,5,3,2,awful beyond words obviously fortified i want to stab whoever made this
+10,,,,,
+11,5,2,1,5,tingle-tongued pleasant finish round and grainy i am so happy after previous i almost never want to drink whiskey again
+12,,,,,
+13,4.8,2,4,5,spicy! this whiskey wants to be your friend but only after it's known you for a while rye?
+14,4.2,2,3,4,mild spice makes its own booziness with sweet grain this whiskey is resigned to failing life's trials and tribulations but at least it got better grades than you in high school
+15,1,5,4,1,fuck this
+16,,,,,

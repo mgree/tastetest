@@ -1,0 +1,17 @@
+Overall,Sweetness,Mellowness,Cost,Notes
+1,1,4,3,1,smells of nail polish remover
+2,,,,,
+3,2,2,1,1,methyl nose water body strong alcohol on tongue brown sugar at end
+4,,,,,
+5,3,2,2,3,smokey acetone nose oily
+6,,,,,
+7,1,3,3,1,oily licorice
+8,,,,,
+9,3,3,1,2,no scent tastes like creamed corn my lips burned :(
+10,,,,,
+11,3,1,2,,sour aftertaste not very flavorful
+12,,,,,
+13,1,3,2,2,licorice scent strong alcohol in mouth
+14,,,,,
+15,3,3,3,1,flavorful
+16,,,,,

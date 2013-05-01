@@ -1,0 +1,17 @@
+Name,Proof,Cost
+1,Jack Daniels Black,80,22.99
+2,Wild Turkey Rye,81,20.99
+3,Heaven Hill,80,7.87
+4,Banker's Club,80,7.12
+5,Bulleit Rye,90,25.99
+6,Wild Turkey 81,81,22.99
+7,Carstair's,80,5.78
+8,Eagle Rare,90,25.99
+9,Four Queens,101,9.99
+10,Old Grandad,86,15.99
+11,Jim Beam,80,17.99
+12,Rebel Yell,80,12.99
+13,Evan Williams,86,12.49
+14,Seagram's 7,80,10.99
+15,Canadian Club,80,19.99
+16,Ezra Brooks,90,11.99
