@@ -1,5 +1,6 @@
 library("directlabels")
 library("ggplot2")
+library("reshape2")
 
 # load top-level data
 whiskies <- read.table("whiskies.txt",header=TRUE,sep=",",quote="\"")
@@ -29,6 +30,7 @@ loadRating <- function(file) {
   r <- lapply(r[,1:4],normalize,from=1,to=5)
   r$Whiskey <- whiskies$Name
   r$Proof <- whiskies$Proof
+  r$RealCost <- whiskies$Cost
 
   name <- cleanName(file)
   r$Taster <- name
@@ -82,3 +84,18 @@ drawPlot(ggplot(ratings,aes(x=reorder(Whiskey,Proof),y=Mellowness)) +
                    position=position_jitter(),size=4) +
          xlab("Whiskey") + guides(colour=FALSE) + ggtitle("Mellowness vs. proof, by whiskey"),
          file.path(reports,"mellowness_proof_violin.png"),width=1500)
+
+# comparing different rating axes
+ratings.long <- melt(ratings,id=c("Whiskey","Overall"),measure=c("Sweetness","Mellowness","Cost"))
+drawPlot(direct.label(ggplot(ratings.long,aes(x=Overall,y=value,colour=variable)) +
+                      ylim(1,5) + ylab("") +
+                      geom_smooth(na.rm=TRUE) +
+                      ggtitle("Overall ratings vs. other variables"),
+                      "top.bumptwice"),
+         file.path(reports,"overall_variables.png"),width=500,height=500)
+
+# cost vs real cost
+drawPlot(ggplot(ratings,aes(x=RealCost,y=Cost,colour=Gender)) +
+         ylim(1,5) + xlab("Real Cost ($/.75L)") + geom_smooth() +
+         ggtitle("Cost vs. real cost"),
+         file.path(reports,"cost.png"),width=500,height=500)
