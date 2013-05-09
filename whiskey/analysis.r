@@ -18,7 +18,8 @@ cleanName <- function(file) {
 normalize <- function(v,from=0,to=1) {
   high <- max(v, na.rm=TRUE)
   low <- min(v, na.rm=TRUE)
-  ui <- (v - low)/(high - low)
+
+  ui <- (v - low)/max(high-low,1)
   (ui * (to - from)) + from
 }
 
@@ -112,3 +113,5 @@ drawPlot(ggplot(ratings,aes(x=RealCost,y=Cost,colour=Gender)) +
          ylim(1,5) + xlab("Real Cost ($/.75L)") + geom_smooth() +
          ggtitle("Cost vs. real cost"),
          file.path(reports,"cost.png"),width=500,height=500)
+
+#ggplot(ratings,aes(x=RealCost,y=Proof,colour=Whiskey,size=Overall)) + geom_text(aes(label=Whiskey),position=position_jitter())
