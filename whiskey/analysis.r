@@ -115,3 +115,31 @@ drawPlot(ggplot(ratings,aes(x=RealCost,y=Cost,colour=Gender)) +
          file.path(reports,"cost.png"),width=500,height=500)
 
 #ggplot(ratings,aes(x=RealCost,y=Proof,colour=Whiskey,size=Overall)) + geom_text(aes(label=Whiskey),position=position_jitter())
+
+# Affine model
+#
+# Factor_{whiskey,taster} = discretize(
+#  (actual_{whiskey,factor} + error*noise_{taster,factor})*gain_{taster,factor} +
+#  bias_{taster,factor})
+#
+# actual, gain, and bias are fixed, scalar parameters of the model
+# noise is a random variable parameter of the model
+# error is N(0,1)
+#
+# general plan:
+#   given this model, use recursive descent (or some other form of minimization)
+#   to find values for the parameters that maximize Prob(data | model)
+#     PROTIP: calculate log and add that together to minimize floating point error
+#
+# actual = 16 * 4
+# noise = 23 * 4
+# gain = 23 * 4
+# bias = 23 * 4
+#  |model| = 340
+#
+#
+#factorProb <- function (w, tnoise, tgain, tbias) {
+#  meanContrib <- w * tgain + tbias
+#  stddevContrib <- tnoise * tgain
+#  
+#}
