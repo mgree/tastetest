@@ -1,6 +1,7 @@
 library("directlabels")
 library("ggplot2")
 library("reshape2")
+library("xtable")
 
 # load top-level data
 whiskies <- read.table("whiskies.txt",header=TRUE,sep=",",quote="\"")
@@ -23,17 +24,32 @@ normalize <- function(v,from=0,to=1) {
   (ui * (to - from)) + from
 }
 
+sink(file.path(reports,"prefs.html"))
+cat("<html><head><title>Whiskey Preferences</title></head><body>")
+
 loadRating <- function(file) {
   r <- data.frame(read.table(file,header=TRUE,sep=",",quote="\""))
   row.names(r) <- whiskies$Name
+
+  name <- cleanName(file)
+  
+  # generate individual report in the prefs file
+  df <- subset(r,!(is.na(Overall) &
+                   is.na(Sweetness) &
+                   is.na(Mellowness) &
+                   is.na(Cost) &
+                   nchar(as.character(Notes)) == 0),
+               select=c(Overall,Sweetness,Mellowness,Cost,Notes))
+  t <- xtable(df[order(-df$Overall),])
+  cat(paste("<h1>",name,"</h1>"))
+  print(t,type="html")
   
   # normalize and aggregate
   r <- lapply(r[,1:4],normalize,from=1,to=5)
   r$Whiskey <- whiskies$Name
   r$Proof <- whiskies$Proof
   r$RealCost <- whiskies$Cost
-
-  name <- cleanName(file)
+  
   # kludge fix up
   if (name == "justin_retaste") {
     name = "justin"
@@ -47,6 +63,10 @@ loadRating <- function(file) {
 # load individual ratings
 rawRatings <- list.files("ratings",pattern="*.txt",full.names=TRUE)
 ratings <- data.frame(do.call("rbind",lapply(rawRatings,loadRating)))
+
+# finish up prefs file
+cat("</body></html>")
+sink()
 
 drawPlot <- function (p,out,width=800,height=600) {
   if (!file.exists(out) | fresh) {
